@@ -8,4 +8,7 @@ class User < ApplicationRecord
                     #case_sensitive: false 大文字小文字の区別なし
   has_secure_password
   
+  #1:Nを明示
+  has_many :microposts
+  
 end

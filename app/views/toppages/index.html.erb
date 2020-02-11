@@ -1,9 +1,21 @@
 <% if logged_in? %>
-  
-  <p>Logged in : <%= current_user.name %></p>
+  <!--Logg-in-->
+  <div class="row">
+    <aside class="col-sm-4" >
+      <%= form_with(model: @micropost, local: true) do |f| %>
+        <div class="form-group">
+          <%= f.text_area :content, class: 'form-control', rows: 5 %>
+        </div>
+        <%= f.submit 'Post', class: 'btn btn-primary btn-lg mb-3' %>
+      <% end %>
+    </aside>
+    <div class="col-sm-8">
+      <%= render 'microposts/microposts', microposts: @microposts %>
+    </div>
+  </div>
   
 <% else %>
-
+  <!--not log in-->
   <div class="center jumbotron">
     <div class="text-center">
       <h1 class="mb-4">Welcome to the Microposts</h1>

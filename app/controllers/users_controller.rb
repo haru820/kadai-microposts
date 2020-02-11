@@ -8,6 +8,8 @@ class UsersController < ApplicationController
 
   def show
     set_user
+    @microposts = @user.microposts.order(id: :desc).page(params[:page]).per(5)
+    counts(@user)
   end
 
   def new
