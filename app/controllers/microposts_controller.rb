@@ -9,7 +9,7 @@ class MicropostsController < ApplicationController
       redirect_to root_url
     else
       #失敗したときの再取得
-      @microposts = current_user.microposts.order(id: :desc).page(params[:page]).per(5)
+      @microposts = current_user.feed_microposts.order(id: :desc).page(params[:page]).per(5)
       
       flash.now[:danger] = 'Ops!! Posting Failed...'
       render 'toppages/index'
